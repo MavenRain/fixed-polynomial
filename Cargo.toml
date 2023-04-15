@@ -1,6 +1,5 @@
 [package]
 name = "fixed-polynomial"
-authors = "Onyeka Obi"
 description = "Polynomial arithmetic functions with compile-time degree checks"
 readme = "README.md"
 license = "MIT"
