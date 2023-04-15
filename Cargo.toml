@@ -2,6 +2,7 @@
 name = "fixed-polynomial"
 description = "Polynomial arithmetic functions with compile-time degree checks"
 readme = "README.md"
+repository = "https://github.com/MavenRain/fixed-polynomial"
 license = "MIT"
 version = "0.1.0"
 edition = "2021"
