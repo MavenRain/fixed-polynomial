@@ -74,6 +74,15 @@ where
             .map(|(_, value)| value)
             .unwrap_or(&F::ZERO)
     }
+
+    pub fn evaluate(&self, x: F) -> F {
+        self.0
+            .iter()
+            .rev()
+            .fold(F::ZERO, |accumulator, coefficient| {
+                accumulator * x + *coefficient
+            })
+    }
 }
 
 impl<F: Field, N: ArrayLength<F> + Add<B1>> Neg for Polynomial<F, N>
@@ -317,5 +326,14 @@ mod tests {
         let p2 = Polynomial::<isize, U2>::from(GenericArray::from([4, 5, 6]));
         let expected = Polynomial::from(GenericArray::from([1, 2, 3]));
         assert_eq!((p1 / p2).unwrap(), expected);
+    }
+
+    #[test]
+    fn test_evaluate() {
+        // Create a polynomial 3x^3 + 2x^2 + x + 1
+        let poly = Polynomial::<isize, U3>::from(GenericArray::from([1, 1, 2, 3]));
+
+        // Check that the result is correct
+        assert_eq!(poly.evaluate(2), 35);
     }
 }
